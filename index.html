@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CoLab · Salas por horas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="top">
+    <div class="top-inner">
+      <a class="brand" href="#reservar">CoLab</a>
+      <nav class="nav" aria-label="Secciones">
+        <button type="button" class="nav-btn" data-view="reservar" aria-current="page">Reservar</button>
+        <button type="button" class="nav-btn" data-view="agenda">Agenda</button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section id="view-reservar" aria-labelledby="reservar-title">
+      <div class="intro">
+        <h1 id="reservar-title">Salas por horas en Valencia</h1>
+        <p>Grupos de al menos 4 personas. Una sala y una franja solo pueden tener una reserva.</p>
+      </div>
+      <div id="rooms" class="rooms"></div>
+      <form id="book-form" class="panel" novalidate>
+        <div>
+          <h2>Reservar franja</h2>
+          <p id="selection-summary" class="summary">Elegid una franja marcada como Libre.</p>
+          <p id="form-error" class="message error" role="alert"></p>
+          <p id="form-ok" class="message ok" role="status"></p>
+        </div>
+        <div class="fields">
+          <label>
+            Nombre de quien reserva
+            <input id="booker" name="booker" type="text" maxlength="80" autocomplete="name">
+          </label>
+          <label>
+            Personas del grupo
+            <input id="people" name="people" type="number" inputmode="numeric" min="4" step="1" placeholder="4">
+          </label>
+        </div>
+        <button id="book-submit" class="btn primary" type="submit">Reservar</button>
+        <p class="fine">El precio figuraría como importe retenido en la tarjeta. En este prototipo no hay cobro real.</p>
+      </form>
+    </section>
+
+    <section id="view-agenda" aria-labelledby="agenda-title" hidden>
+      <div class="intro">
+        <h1 id="agenda-title">Agenda del negocio</h1>
+        <p>Reservas ordenadas por día. Cancelar solo es posible con al menos 2 horas de antelación.</p>
+      </div>
+      <div class="panel agenda-tools">
+        <label>
+          Buscar por nombre
+          <input id="agenda-query" type="search" placeholder="Nombre de quien reservó">
+        </label>
+      </div>
+      <p id="agenda-message" class="message" role="status"></p>
+      <div id="agenda"></div>
+    </section>
+  </main>
+
+  <footer class="foot">
+    <p>Las reservas se guardan solo en este navegador. Otro móvil no las ve.</p>
+  </footer>
+  <script src="app.js"></script>
+</body>
+</html>
